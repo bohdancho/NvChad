@@ -125,7 +125,7 @@ M.lspconfig = {
 
     ["gr"] = {
       function()
-        vim.lsp.buf.references()
+        require("telescope.builtin").lsp_references()
       end,
       "lsp references",
     },
@@ -144,13 +144,6 @@ M.lspconfig = {
       "LSP hover",
     },
 
-    ["<leader>D"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "LSP definition type",
-    },
-
     ["<leader>lr"] = {
       function()
         require("nvchad.renamer").open()
@@ -165,11 +158,11 @@ M.lspconfig = {
       "[L]SP code [a]ction",
     },
 
-    ["<leader>f"] = {
+    ["<leader>d"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
-      "Floating diagnostic",
+      "Floating [d]iagnostic",
     },
 
     ["[d"] = {
@@ -188,39 +181,10 @@ M.lspconfig = {
 
     ["<leader>q"] = {
       function()
-        vim.diagnostic.setloclist()
+        require("telescope.builtin").diagnostics { bufnr = 0 }
+        -- vim.diagnostic.setloclist()
       end,
       "Diagnostic setloclist",
-    },
-
-    ["<leader>wa"] = {
-      function()
-        vim.lsp.buf.add_workspace_folder()
-      end,
-      "Add workspace folder",
-    },
-
-    ["<leader>wr"] = {
-      function()
-        vim.lsp.buf.remove_workspace_folder()
-      end,
-      "Remove workspace folder",
-    },
-
-    ["<leader>wl"] = {
-      function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end,
-      "List workspace folders",
-    },
-  },
-
-  v = {
-    ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "LSP code action",
     },
   },
 }
@@ -256,11 +220,6 @@ M.telescope = {
 
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
-
-    -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
-
-    ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
   },
 }
 
@@ -269,49 +228,21 @@ M.nvterm = {
 
   t = {
     -- toggle in terminal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
-    },
-
     ["<A-h>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
-    },
-
-    ["<A-v>"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "Toggle vertical term",
     },
   },
 
   n = {
     -- toggle in normal mode
-    ["<A-i>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
-    },
-
     ["<A-h>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
-    },
-
-    ["<A-v>"] = {
-      function()
-        require("nvterm.terminal").toggle "vertical"
-      end,
-      "Toggle vertical term",
     },
 
     -- new
@@ -320,33 +251,6 @@ M.nvterm = {
         require("nvterm.terminal").new "horizontal"
       end,
       "New horizontal term",
-    },
-
-    ["<leader>v"] = {
-      function()
-        require("nvterm.terminal").new "vertical"
-      end,
-      "New vertical term",
-    },
-  },
-}
-
-M.whichkey = {
-  plugin = true,
-
-  n = {
-    ["<leader>wK"] = {
-      function()
-        vim.cmd "WhichKey"
-      end,
-      "Which-key all keymaps",
-    },
-    ["<leader>wk"] = {
-      function()
-        local input = vim.fn.input "WhichKey: "
-        vim.cmd("WhichKey " .. input)
-      end,
-      "Which-key query lookup",
     },
   },
 }
@@ -426,13 +330,6 @@ M.gitsigns = {
         package.loaded.gitsigns.blame_line()
       end,
       "Blame line",
-    },
-
-    ["<leader>td"] = {
-      function()
-        require("gitsigns").toggle_deleted()
-      end,
-      "Toggle deleted",
     },
   },
 }
