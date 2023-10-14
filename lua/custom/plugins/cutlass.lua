@@ -2,5 +2,7 @@
 return {
   "gbprod/cutlass.nvim",
   event = "InsertEnter",
-  opts = {},
+  opts = {
+    exclude = { "xx" }, -- exclude x in visual mode for cutting
+  },
 }

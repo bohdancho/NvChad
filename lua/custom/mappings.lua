@@ -34,19 +34,10 @@ M.general = {
     -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
-
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "LSP formatting",
-    },
   },
 
   t = {
@@ -94,9 +85,9 @@ M.tabufline = {
 M.comment = {
   plugin = true,
 
-  -- toggle comment in both modes
+  -- toggle comment in both modes. C-_ means ctrl+/
   n = {
-    ["<leader>/"] = {
+    ["<C-_>"] = {
       function()
         require("Comment.api").toggle.linewise.current()
       end,
@@ -105,7 +96,7 @@ M.comment = {
   },
 
   v = {
-    ["<leader>/"] = {
+    ["<C-_>"] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
       "Toggle comment",
     },
@@ -132,11 +123,11 @@ M.lspconfig = {
       "LSP definition",
     },
 
-    ["K"] = {
+    ["gr"] = {
       function()
-        vim.lsp.buf.hover()
+        vim.lsp.buf.references()
       end,
-      "LSP hover",
+      "lsp references",
     },
 
     ["gi"] = {
@@ -146,11 +137,11 @@ M.lspconfig = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
+    ["K"] = {
       function()
-        vim.lsp.buf.signature_help()
+        vim.lsp.buf.hover()
       end,
-      "LSP signature help",
+      "LSP hover",
     },
 
     ["<leader>D"] = {
@@ -160,25 +151,18 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+    ["<leader>lr"] = {
       function()
         require("nvchad.renamer").open()
       end,
-      "LSP rename",
+      "[L]SP [r]ename",
     },
 
-    ["<leader>ca"] = {
+    ["<leader>la"] = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "LSP code action",
-    },
-
-    ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      "LSP references",
+      "[L]SP code [a]ction",
     },
 
     ["<leader>f"] = {
