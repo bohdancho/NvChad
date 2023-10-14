@@ -37,7 +37,6 @@ M.general = {
 
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
-    ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
   },
 
   t = {
@@ -182,7 +181,6 @@ M.lspconfig = {
     ["<leader>q"] = {
       function()
         require("telescope.builtin").diagnostics { bufnr = 0 }
-        -- vim.diagnostic.setloclist()
       end,
       "Diagnostic setloclist",
     },
@@ -215,11 +213,11 @@ M.telescope = {
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "[G]it [c]ommits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "[G]it [s]tatus" },
 
     -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
+    ["<leader>t"] = { "<cmd> Telescope terms <CR>", "Pick hidden [t]erm" },
   },
 }
 
@@ -311,25 +309,25 @@ M.gitsigns = {
     },
 
     -- Actions
-    ["<leader>rh"] = {
+    ["<leader>hr"] = {
       function()
         require("gitsigns").reset_hunk()
       end,
-      "Reset hunk",
+      "[H]unk [R]eset",
     },
 
-    ["<leader>ph"] = {
+    ["<leader>hp"] = {
       function()
         require("gitsigns").preview_hunk()
       end,
-      "Preview hunk",
+      "[H]unk [P]review",
     },
 
     ["<leader>gb"] = {
       function()
         package.loaded.gitsigns.blame_line()
       end,
-      "Blame line",
+      "[G]it [B]lame line",
     },
   },
 }
