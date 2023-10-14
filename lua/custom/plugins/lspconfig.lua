@@ -5,9 +5,10 @@ return {
     "williamboman/mason-lspconfig.nvim",
   },
   config = function()
+    local lspconfig = require "lspconfig"
     local config = require "plugins.configs.lspconfig"
     require("mason-lspconfig").setup {
-      ensure_installed = { "tsserver" },
+      ensure_installed = { "tsserver", "emmet_ls", "tailwindcss" },
     }
 
     local function ts_organize_imports()
@@ -18,7 +19,7 @@ return {
       vim.lsp.buf.execute_command(params)
     end
 
-    require("lspconfig").tsserver.setup {
+    lspconfig.tsserver.setup {
       on_attach = config.on_attach,
       capabilities = config.capabilities,
       commands = {
@@ -27,6 +28,16 @@ return {
           description = "Organize Imports",
         },
       },
+    }
+
+    lspconfig.emmet_ls.setup {
+      on_attach = config.on_attach,
+      capabilities = config.capabilities,
+    }
+
+    lspconfig.tailwindcss.setup {
+      on_attach = config.on_attach,
+      capabilities = config.capabilities,
     }
   end,
 }

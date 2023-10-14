@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = "everblush" }
+M.ui = { theme = "github_dark" }
 M.plugins = "custom.plugins"
 
 -- check core.mappings for table structure
