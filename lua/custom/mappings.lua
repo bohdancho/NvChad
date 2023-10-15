@@ -217,7 +217,7 @@ M.telescope = {
     ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "[G]it [s]tatus" },
 
     -- pick a hidden term
-    ["<leader>t"] = { "<cmd> Telescope terms <CR>", "Pick hidden [t]erm" },
+    ["<leader>tp"] = { "<cmd> Telescope terms <CR>", "[P]ick hidden [t]erm" },
   },
 }
 
@@ -244,7 +244,7 @@ M.nvterm = {
     },
 
     -- new
-    ["<leader>h"] = {
+    ["<leader>tn"] = {
       function()
         require("nvterm.terminal").new "horizontal"
       end,
