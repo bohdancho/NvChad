@@ -5,6 +5,9 @@ return {
   },
   opts = {
     defaults = {
+      preview = {
+        treesitter = { disable = { "lua" } },
+      },
       mappings = {
         i = {
           ["<C-j>"] = require("telescope.actions").move_selection_next,
