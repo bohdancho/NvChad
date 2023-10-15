@@ -1,6 +1,6 @@
 return {
   "pmizio/typescript-tools.nvim",
-  lazy = false,
+  event = "VeryLazy",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   opts = {},
 }
