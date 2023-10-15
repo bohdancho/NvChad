@@ -332,4 +332,10 @@ M.gitsigns = {
   },
 }
 
+M.fugitive = {
+  n = {
+    ["<leader>gd"] = { "<cmd> Gvdiff <CR>", "[G]it [D]iff" },
+  },
+}
+
 return M
