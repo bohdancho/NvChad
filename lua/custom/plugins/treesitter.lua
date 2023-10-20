@@ -12,6 +12,11 @@ return {
       "typescript",
       "tsx",
       "json",
+      "php",
+
+      "make",
+      "markdown",
+      "bash",
     },
     highlight = {
       disable = { "lua" },
