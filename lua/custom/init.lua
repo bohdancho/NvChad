@@ -1,3 +1,4 @@
 vim.opt.relativenumber = true
-vim.o.shell = "bash -l"
--- set shell=bash\ -l
+
+-- not tmux compatible
+-- vim.o.shell = "bash -l"
