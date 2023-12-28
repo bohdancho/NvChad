@@ -333,8 +333,27 @@ M.gitsigns = {
 }
 
 M.fugitive = {
+  plugin = true,
   n = {
     ["<leader>gd"] = { "<cmd> Gvdiff <CR>", "[G]it [D]iff" },
+  },
+}
+
+M.react_extract = {
+  plugin = true,
+  v = {
+    ["<leader>re"] = {
+      function()
+        require("react-extract").extract_to_new_file()
+      end,
+      "[R]eact [E]xtract",
+    },
+    ["<leader>rc"] = {
+      function()
+        require("react-extract").extract_to_current_file()
+      end,
+      "[R]eact extract to [C]urrent file",
+    },
   },
 }
 

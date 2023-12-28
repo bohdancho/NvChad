@@ -18,7 +18,7 @@ return {
       on_attach = config.on_attach,
       capabilities = config.capabilities,
     }
-    --
+
     lspconfig.emmet_ls.setup {
       on_attach = config.on_attach,
       capabilities = config.capabilities,
@@ -27,6 +27,7 @@ return {
     lspconfig.tailwindcss.setup {
       on_attach = config.on_attach,
       capabilities = config.capabilities,
+      settings = { tailwindCSS = { experimental = { classRegex = { { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" } } } } },
     }
   end,
 }
